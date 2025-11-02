@@ -1,0 +1,104 @@
+Prompt 1: What is causing this error in this code. # Extract the parameters for the desired event:
+event = events[eventname]
+fn_H1 = event['data/fn_H1']              # File name for H1 data
+fn_L1 = event['data/fn_L1']              # File name for L1 data
+fn_template = event['data/fn_template']  # File name for template waveform
+fs = event['fs']                    # Set sampling rate
+tevent = event['tevent']            # Set approximate event GPS time
+fband = event['fband']              # frequency band for bandpassing signal
+print("Reading in parameters for event " + event["name"])
+print(event). How can I modify this to work. ---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+Cell In[6], line 3
+      1 # Extract the parameters for the desired event:
+      2 event = events[eventname]
+----> 3 fn_H1 = event['data/fn_H1']              # File name for H1 data
+      4 fn_L1 = event['data/fn_L1']              # File name for L1 data
+      5 fn_template = event['data/fn_template']  # File name for template waveform
+
+KeyError: 'data/fn_H1'
+
+Response: Perfect — you caught a common issue here.
+
+The key error means the JSON file’s keys are still named `"fn_H1"`, `"fn_L1"`, etc., **not** `"data/fn_H1"`.
+So you **don’t** change the key names (those stay as they are inside the JSON).
+You only need to **prepend the folder path** when reading the files from disk.
+
+So change your code like this:
+
+```python
+import os
+
+data_dir = "data"
+
+# Extract the parameters for the desired event
+event = events[eventname]
+
+# Prepend the data directory to the filenames from the JSON
+fn_H1 = os.path.join(data_dir, event['fn_H1'])
+fn_L1 = os.path.join(data_dir, event['fn_L1'])
+fn_template = os.path.join(data_dir, event['fn_template'])
+
+fs = event['fs']
+tevent = event['tevent']
+fband = event['fband']
+
+print("Reading in parameters for event " + event["name"])
+print(event)
+```
+
+✅ **Explanation:**
+
+* The JSON still stores just the filenames (like `"LOSC_4K_H1.hdf5"`).
+* You’re now telling Python: “these files are in the `data/` folder.”
+
+This fixes the `KeyError` and correctly loads your data from the new directory structure.
+
+Would you like me to show you how to fix the figure/audio saving paths next so everything matches the new structure?
+
+
+
+Prompt: Is join the only way?
+
+
+Response: Good question — no, it’s not the **only** way, but it’s the **safest and most portable** way (it works on Windows, macOS, and Linux).
+
+That said, you have simpler alternatives if you prefer shorter code:
+
+### ✅ Option 1 (Recommended)
+
+```python
+fn_H1 = os.path.join("data", event["fn_H1"])
+```
+
+✔ Portable across all systems
+✔ Automatically handles slashes correctly
+
+### ✅ Option 2 (String concatenation)
+
+```python
+fn_H1 = "data/" + event["fn_H1"]
+```
+
+✔ Works fine on most setups (especially in notebooks)
+⚠ Breaks if you ever run this on Windows paths that use backslashes (`\`)
+
+### ✅ Option 3 (f-string)
+
+```python
+fn_H1 = f"data/{event['fn_H1']}"
+```
+
+✔ Clean and readable
+⚠ Same portability caution as Option 2
+
+In your case — since you’re working inside a controlled environment (JupyterHub on Linux), any of these will work.
+If you want it simple and clear for grading, Option 3 is perfectly fine:
+
+```python
+fn_H1 = f"data/{event['fn_H1']}"
+fn_L1 = f"data/{event['fn_L1']}"
+fn_template = f"data/{event['fn_template']}"
+```
+
+Would you like me to show the corresponding edits for where figures and audio files are saved next?
