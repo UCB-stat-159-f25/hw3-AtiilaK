@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools >= 70", "wheel", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ligotools"
+version = "0.1.0"
+authors = [
+  { name = "Ligo Scientific Collaboration (LSC) and Atiila Joselyn Birah Kharobo" }
+]
+description = "Tools for the LIGO Gravitational Wave Detection Tutorial"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy",
+  "scipy",
+  "h5py",
+  "matplotlib",
+  "ipykernel",
+  "pytest"
+]
+license = "BSD-3-Clause"
+license-files = ["LICEN[CS]E*"]
+keywords = ["gravitational-waves", "signal-processing", "LIGO"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/UCB-stat-159-f25/hw3-AtiilaK"
+Issues = "https://github.com/UCB-stat-159-f25/hw3-AtiilaK/issues"
+
+[tool.setuptools]
+packages = ["ligotools"]
