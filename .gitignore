@@ -1,3 +1,6 @@
 ligo.egg-info/
 .ipynb_checkpoints/
 build/
+
+# MyST build outputs
+_build
