@@ -1,0 +1,1 @@
+import{a}from"/user/atiila_kharobo/myst-build/hw3-AtiilaK/build/_shared/chunk-VFFQVNAW.js";import"/user/atiila_kharobo/myst-build/hw3-AtiilaK/build/_shared/chunk-HBYGZG3X.js";import"/user/atiila_kharobo/myst-build/hw3-AtiilaK/build/_shared/chunk-2NH4LW52.js";export default a();
