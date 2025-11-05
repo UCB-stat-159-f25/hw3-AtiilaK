@@ -11,7 +11,7 @@ project:
   github: https://github.com/UCB-stat-159-f25/hw3-AtiilaK
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   toc:
-  - file: README.md
+  - file: index.md
   - file: LOSC_Event_tutorial.ipynb
 
 site:
@@ -19,4 +19,3 @@ site:
   # options:
   #   favicon: favicon.ico
   #   logo: site_logo.png
-
