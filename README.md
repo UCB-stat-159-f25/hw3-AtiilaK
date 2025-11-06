@@ -11,5 +11,6 @@ _This repository is public so that Binder can find it. All code and data is base
 - `ligotools/`: installable package (whiten, reqshift, write_wavfile, plotting utils)
 - `LOSC_Event_tutorial.ipynb`: main analysis notebook using `ligotools`
 - `tests/`: pytest unit tests for `readligo.py` and `utils.py`
+- The website: https://ucb-stat-159-f25.github.io/hw3-AtiilaK/
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-f25/hw3-AtiilaK/HEAD?urlpath=%2Fdoc%2Ftree%2FLOSC_Event_tutorial.ipynb)
